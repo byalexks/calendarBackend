@@ -1,12 +1,19 @@
-const {Router} = require('express');
+const { Router } = require('express');
+const { check } = require('express-validator');
+const { nuevoUsuario, renew, Login } = require('../controllers/auth');
 const router = Router();
 
-router.get('/', (req,res)=>{
-    res.json({
-        msg: 'klk puto'
-    })
-})
+// host + '/api/auth' 
 
+router.post('/new',
+[ //middlewares
+    check('name', 'el nombre es obligatorio').not().isEmpty(),
+],
+nuevoUsuario)
+
+router.post('/', Login )
+
+router.get('/renew', renew)
 
 module.exports = router;
 

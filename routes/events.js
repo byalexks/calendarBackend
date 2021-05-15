@@ -16,6 +16,7 @@ router.post('/',
     validarJTW,
     validarCampos
 ] ,crearEvento)
+
 router.put('/:id',validarJTW ,editarEvento)
 router.delete('/:id',validarJTW ,eliminarEvento)
 
